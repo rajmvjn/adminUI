@@ -24,7 +24,7 @@
 
 .pagination {
   height: 5rem;
-
+  border: 1px solid;
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
   align-items: center;

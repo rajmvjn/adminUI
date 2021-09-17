@@ -1,6 +1,8 @@
+import styles from './Button.module.css';
+
 const Button = props => {
     return (
-        <button onClick={props.clickHandler}>{props.children}</button>
+        <button onClick={props.clickHandler} className={styles.button}>{props.children}</button>
     )
 }
 

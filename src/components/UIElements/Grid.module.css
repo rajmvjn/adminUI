@@ -1,8 +1,8 @@
 .appGrid {
-  height: 78%;
+  height: 73%;
   width: 100%;
-  border: 1px solid black;
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
 .appGridHeader {
@@ -10,14 +10,22 @@
   height: 5rem;
 
   display: grid;
-  grid-template-columns: 0.2fr 1fr 2fr 1fr;
+  grid-template-columns: 0.3fr 1fr 2fr 0.5fr;
   align-items: center;
+}
+
+.col1 {
+  justify-self: center;
+}
+
+.col4 {
+  justify-self: center;
 }
 
 .appGridRow {
   height: 5rem;
 
   display: grid;
-  grid-template-columns: 0.2fr 1fr 2fr 1fr;
+  grid-template-columns: 0.3fr 1fr 2fr 0.5fr;
   align-items: center;
 }

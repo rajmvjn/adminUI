@@ -1,13 +1,16 @@
 import styles from './Application.module.css';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { appCodes } from '../../mock/appCodes';
 
 import SearchInput from '../../components/controls/SearchInput';
 import SortSelect from '../../components/controls/SortSelect';
 import Button from '../../components/controls/Button';
 import Grid from '../../components/UIElements/Grid';
+import Form from '../common/Form';
 
 const Application = () => {
+
+    const [ showForm, setShowForm ] = useState(false);
 
     const onChangeHandler = (event) => {
         alert(event.target.value);
@@ -17,15 +20,36 @@ const Application = () => {
         alert(event.target.value);
     }
 
-    const onButtonClickHandler = (ACTION,event) => {
-        console.log(ACTION, event)
+    const toggleShowForm = () => {
+        setShowForm(prevState => {
+            return !prevState;
+        })
     }
 
+    const onButtonClickHandler = (ACTION,event) => {
+        if(ACTION === 'CREATE') {
+            toggleShowForm();
+        }
+    }
 
+    const onCancelClickHandler = () => {
+        toggleShowForm();
+    }
+
+    const formData = {
+        actionName: 'Application',
+        firstInputLabel: 'Application Code',
+        secondInputLabel: '',
+        thirdInputLabel: 'application description'
+    }
+
+    const formElement = <Form formData = {formData} cancelClickHandler={onCancelClickHandler} />
 
     return (
 
-        <Fragment>
+        <Fragment>   
+            { showForm ? formElement :
+                <Fragment>    
             <div className={styles.appSubHeader}>
                 <div> List of Applications  </div>
                 <div className={styles.selectbox}> 
@@ -70,8 +94,9 @@ const Application = () => {
                     <div>dropdown</div>
 
                     <div>Pagination</div>
-            </div>
-        </Fragment>
+            </div> </Fragment> }
+            </Fragment>
+        
     )
 
 }

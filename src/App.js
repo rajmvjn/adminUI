@@ -7,9 +7,7 @@ import routes from "./routes/rotes";
 
 import './App.css';
 
-const App = () => {
-
-  
+const App = () => {  
 
   const [showNavBar, setShowNavBar] = useState(true);
 

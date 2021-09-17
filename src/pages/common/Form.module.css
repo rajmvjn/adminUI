@@ -1,0 +1,48 @@
+.formgrid {
+  height: 55rem;
+  width: 65rem;
+  max-width: 30px auto;
+  border: 1px solid;
+  margin: 0 auto;
+  background-color: antiquewhite;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.desc {
+  grid-column: 1/3;
+}
+
+.multipleupload {
+  grid-column: 1/3;
+  justify-self: center;
+}
+
+.uploadfile {
+  grid-column: 1/3;
+}
+
+.submit {
+  grid-column: 1/3;
+  justify-self: end;
+}
+
+.download {
+  justify-self: end;
+}
+
+input {
+  display: block;
+}
+
+.uploadInput {
+  display: inline-block;
+}
+
+.uploadLabel {
+  display: block;
+}
