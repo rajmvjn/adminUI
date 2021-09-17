@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Route, Switch } from "react-router";
+
+import MainHeader from "./layout/MainHeader";
+import MainNavigation from "./layout/MainNavigation";
+import routes from "./routes/rotes";
+
 import './App.css';
 
-function App() {
+const App = () => {
+
+  
+
+  const [showNavBar, setShowNavBar] = useState(true);
+
+  const navBarToggleHandler = () => {
+    setShowNavBar((preState) => {      
+      return !preState;
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="grid">
+      <MainHeader onClick={navBarToggleHandler}/>
+      {showNavBar && <MainNavigation />}
+      <main className= { showNavBar? 'main' : 'main main-stretch'  } >
+        {console.log()}
+        <Switch>
+                { routes.map((route, index) => {
+                  return <Route key={index} {...route} />
+                })}
+        </Switch>
+      </main>
     </div>
-  );
+  )
+
 }
 
 export default App;

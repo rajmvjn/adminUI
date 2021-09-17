@@ -1,0 +1,23 @@
+.appGrid {
+  height: 78%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.appGridHeader {
+  background-color: lightgray;
+  height: 5rem;
+
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 2fr 1fr;
+  align-items: center;
+}
+
+.appGridRow {
+  height: 5rem;
+
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 2fr 1fr;
+  align-items: center;
+}

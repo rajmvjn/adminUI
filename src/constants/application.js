@@ -1,0 +1,1 @@
+export const MENU_OPTIONS = ['Dashboard', 'Application', 'Group', 'User', 'Field', 'Filekey', 'Role', 'Profile', 'Screen', 'Store', 'Reports'];

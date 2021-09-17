@@ -1,0 +1,12 @@
+.sub-header {
+  padding: 1rem 0;
+  font-size: 2rem;
+  color: gray;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
