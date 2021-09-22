@@ -24,34 +24,5 @@ export const appCodes = [
         appCode: "IS01",
         description: "In store application"
     },
-    {
-        id:6,
-        appCode: "IS01",
-        description: "In store application"
-    },
-    {
-        id:7,
-        appCode: "IS01",
-        description: "In store application"
-    },
-    {
-        id:8,
-        appCode: "IS01",
-        description: "In store application"
-    },    
-    {
-        id:9,
-        appCode: "IS01",
-        description: "In store application"
-    },
-    {
-        id:10,
-        appCode: "IS01",
-        description: "In store application"
-    },
-    {
-        id:11,
-        appCode: "IS01",
-        description: "In store application"
-    }
+  
 ];

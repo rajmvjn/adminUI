@@ -1,0 +1,1 @@
+export const APPCODE_URL = 'https://reactui-4772c-default-rtdb.asia-southeast1.firebasedatabase.app/app.json';

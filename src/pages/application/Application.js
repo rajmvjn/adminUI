@@ -1,17 +1,41 @@
 import styles from './Application.module.css';
-import { Fragment, useState } from 'react';
-import { appCodes } from '../../mock/appCodes';
+import { Fragment, useEffect, useState } from 'react';
 
 import SearchInput from '../../components/controls/SearchInput';
 import SortSelect from '../../components/controls/SortSelect';
 import Button from '../../components/controls/Button';
 import Grid from '../../components/UIElements/Grid';
 import Form from '../common/Form';
+import { APPCODE_URL } from '../../constants/api';
+
+import { makeHttpCall } from '../../store/http/httpActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { appCodeActions } from '../../store/application/applicationSlice';
 
 const Application = () => {
 
-    const [ showForm, setShowForm ] = useState(false);
+    const dispatch = useDispatch();
+    const [showForm, setShowForm ] = useState(false);
+    const appCodes = useSelector(state => state.applicationSlice.appCodes);
+    console.log(appCodes);    
+ 
+    // API related code starts..
+    useEffect(() => {
+        dispatch(makeHttpCall(APPCODE_URL, appCodeActions));
+     }, [dispatch]);    
 
+    const onFormSubmission = async (formData) => {      
+        const appCodeData = {
+            id: Math.random(),
+            appCode: formData.firstInput,
+            description: formData.thirdInput
+        }              
+        dispatch(makeHttpCall(APPCODE_URL, appCodeActions, appCodeData, 'POST'));
+        setShowForm(false);
+    } 
+    // API related code ends.
+
+    // event handling starts..
     const onChangeHandler = (event) => {
         alert(event.target.value);
     }
@@ -35,21 +59,23 @@ const Application = () => {
     const onCancelClickHandler = () => {
         toggleShowForm();
     }
-
-    const formData = {
+    //Event handlng ends
+    
+    // Form related code starts..
+    const formLabels = {
         actionName: 'Application',
         firstInputLabel: 'Application Code',
         secondInputLabel: '',
         thirdInputLabel: 'application description'
     }
 
-    const formElement = <Form formData = {formData} cancelClickHandler={onCancelClickHandler} />
+    const formElement = <Form formLabels = {formLabels} cancelClickHandler={onCancelClickHandler} formSubmitHandler={onFormSubmission}/>
+    // Form related code ends.
 
     return (
-
         <Fragment>   
             { showForm ? formElement :
-                <Fragment>    
+                <Fragment>                        
             <div className={styles.appSubHeader}>
                 <div> List of Applications  </div>
                 <div className={styles.selectbox}> 
@@ -95,10 +121,8 @@ const Application = () => {
 
                     <div>Pagination</div>
             </div> </Fragment> }
-            </Fragment>
-        
+            </Fragment>        
     )
-
 }
 
 export default Application;

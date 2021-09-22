@@ -1,12 +1,22 @@
-import { Fragment } from "react";
-import Tile from "../../components/UIElements/Tile";
+import { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
+import Tile from "../../components/UIElements/Tile";
 import styles from './Dashboard.module.css';
-import { dashboard } from "../../mock";
+import { makeHttpCall } from "../../store/http/httpActions";
+import { dashboardActions } from "../../store/dashboard/dashboardSlice";
+import { APPCODE_URL } from '../../constants/api';
 
 const Dashboard = () => {
 
-   const tiles = dashboard.map((tile)  => <Tile key={tile.id} tile={tile} />)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(makeHttpCall(APPCODE_URL, dashboardActions));
+    }, [dispatch]);
+
+    const dasboardItems = useSelector(state => state.dashboardSlice.appCodes);    
+    const tiles = dasboardItems && dasboardItems.map((tile)  => <Tile key={tile.id} tile={tile} />);    
 
     return (
         <Fragment>
@@ -19,7 +29,6 @@ const Dashboard = () => {
             </div>
         </Fragment>
     )
-
 }
 
 export default Dashboard;
