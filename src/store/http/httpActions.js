@@ -30,10 +30,13 @@ export const makeHttpCall = (url, actions, requestBody={}, method='GET') => {
 
     return async (dispatch) => {
         const resDataLocal = await appCodes;
-        dispatchHttpStatusAction(dispatch, 'pending', 'Request in flight', null);
+        dispatchHttpStatusAction(dispatch, 'pending', 'Request in flight', null, '');
+
+        let response;
         
         try {
-            const response = await fetch( url, requestObj );
+            response = await fetch( url, requestObj );
+            console.log(response.status);
             if(!response.ok){
                 throw new Error('Request failed..')
             }
@@ -54,10 +57,11 @@ export const makeHttpCall = (url, actions, requestBody={}, method='GET') => {
                     break;
                 default:                         
             }
-            dispatchHttpStatusAction(dispatch, 'success', 'Request completed', null);
+            dispatchHttpStatusAction(dispatch, 'success', 'Request completed', null, response.status);
 
         } catch (error) {
-            dispatchHttpStatusAction(dispatch, 'error', 'Request Errored', error);
+            console.log(response?.status);
+            dispatchHttpStatusAction(dispatch, 'error', 'Request Errored', error, response?.status);
         }   
         
     }
