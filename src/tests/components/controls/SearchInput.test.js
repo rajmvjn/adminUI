@@ -30,6 +30,5 @@ it("renders with given empty label", () => {
     act(() => {
       render(<SearchInput label={''} />, container);
     });
-    expect(container.textContent).toBe('');
-  
-  });
+    expect(container.textContent).toBe('');  
+});

@@ -7,14 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import  store  from './store/index';
 
+import {ErrorBoundary} from './providers';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ErrorBoundary>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>      
     </BrowserRouter>    
-  </React.StrictMode>,
+  </ErrorBoundary>,
   document.getElementById('root')
 );
 

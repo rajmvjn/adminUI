@@ -1,5 +1,7 @@
+import React from "react";
+
 import Dashboard from "../pages/dashboard/Dashboard";
-import Application from "../pages/application/Application";
+const Application = React.lazy( () => import('../pages/application/Application') );
 
 const routes = [
     {

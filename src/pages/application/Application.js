@@ -1,5 +1,8 @@
-import styles from './Application.module.css';
 import { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { makeHttpCall } from '../../store/http/httpActions';
+import { appCodeActions } from '../../store/application/applicationSlice';
 
 import SearchInput from '../../components/controls/SearchInput';
 import SortSelect from '../../components/controls/SortSelect';
@@ -8,9 +11,7 @@ import Grid from '../../components/UIElements/Grid';
 import Form from '../common/Form';
 import { APPCODE_URL } from '../../constants/api';
 
-import { makeHttpCall } from '../../store/http/httpActions';
-import { useDispatch, useSelector } from 'react-redux';
-import { appCodeActions } from '../../store/application/applicationSlice';
+import styles from './Application.module.css';
 
 const Application = () => {
 

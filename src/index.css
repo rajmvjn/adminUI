@@ -16,3 +16,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Stack tracess are shown on iframe, enable below style to showup the errorBounday content.. */
+iframe {
+  /* display: none; */
+}

@@ -23,7 +23,6 @@ it("renders with given label", () => {
     render(<Button>Submit</Button>, container);
   });
   expect(container.textContent).toBe("Submit");
-
 });
 
 it("renders with empty label", () => {
@@ -31,6 +30,5 @@ it("renders with empty label", () => {
     act(() => {
       render(<Button></Button>, container);
     });
-    expect(container.textContent).toBe('');
-  
-  });
+    expect(container.textContent).toBe('');  
+});

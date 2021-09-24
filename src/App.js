@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { Route, Switch } from "react-router";
 
 import MainHeader from "./layout/MainHeader";
@@ -28,12 +28,13 @@ const App = () => {
         <MainHeader onClick={navBarToggleHandler}/>
         {showNavBar && <MainNavigation />}
         <main className= { showNavBar? 'main' : 'main main-stretch'  } >
-          {console.log()}
-          <Switch>
-                  { routes.map((route, index) => {
-                    return <Route key={index} {...route} />
-                  })}
-          </Switch>
+          <Suspense fallback={<Loader />}>
+            <Switch>
+                    { routes.map((route, index) => {
+                      return <Route key={index} {...route} />
+                    })}
+            </Switch>
+          </Suspense>
         </main>
       </div>
     </Fragment>
