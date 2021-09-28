@@ -19,6 +19,7 @@ describe('Application component', () => {
         render(<Provider store={store}><Application /></Provider>);        
         userEvent.click(screen.getByRole('button', {  name: /create application/i}));
         expect(screen.getByText(/application code/i)).toBeInTheDocument();
+        expect(screen.getByRole('link', {  name: /download excel format/i})).toBeEnabled();
     });
 
     test('search subheader to be present on load', () => {
