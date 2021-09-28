@@ -39,23 +39,24 @@ const Form = props => {
             <div className={styles.items}>Create {formLabels.actionName}</div>
             <div className={styles.download}><a href="download">Download excel format</a> </div>
             <div className={styles.items}>
-                <label>
+                <label htmlFor='firstInput'>
                     {formLabels.firstInputLabel}
                 </label>
-                <input type="text" value={firstInput} onChange={firstInputChangeHandler}/>
+                <input id='firstInput' type="text" value={firstInput} onChange={firstInputChangeHandler}/>
 
             </div>
             <div className={styles.items}>
-                {formLabels.secondInputLabel  &&  <Fragment><label>
+                {formLabels.secondInputLabel  &&  <Fragment>
+                <label htmlFor='secondInput'>
                     {formLabels.secondInputLabel}
                 </label>
-                <input type="text" value={secondInput}  onChange={secondInputChangeHandler}/> </Fragment>}
+                <input id='secondInput' type="text" value={secondInput}  onChange={secondInputChangeHandler}/> </Fragment>}
             </div>
             <div className={styles.desc}>
-                <label>
+                <label htmlFor='thirdInput'>
                     {formLabels.thirdInputLabel}
                 </label>
-                <input type="text" value={thirdInput} onChange={thirdInputChangeHandler}/>
+                <input id='thirdInput' type="text" value={thirdInput} onChange={thirdInputChangeHandler}/>
             </div>
             <div className={styles.multipleupload}>Or upload multiple</div>
             <div className={styles.uploadfile}>
