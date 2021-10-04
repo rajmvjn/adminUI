@@ -1,19 +1,20 @@
-import { useState, Suspense } from 'react';
-import { Route, Switch } from "react-router";
+import { useState } from 'react';
 
 import MainHeader from "./layout/MainHeader";
 import MainNavigation from "./layout/MainNavigation";
-import routes from "./routes/rotes";
 
 import './App.css';
 import { Fragment } from 'react';
-import Loader  from './components/UIElements/Loader';
+import Loader  from './components/Loader';
 import { useSelector } from 'react-redux';
+import RoutesView from './routes/RoutesView';
+import Banner from './components/Banner';
 
 const App = () => {  
 
   const [showNavBar, setShowNavBar] = useState(true);
-  const httpStatus = useSelector(state=>state.httpStatusSlice.status);console.log(httpStatus)
+  const httpStatusSlice = useSelector(state=>state.httpStatusSlice);
+  console.log(httpStatusSlice)
 
   const navBarToggleHandler = () => {
     setShowNavBar((preState) => {      
@@ -23,24 +24,17 @@ const App = () => {
 
   return (
     <Fragment>
-      { httpStatus === 'pending' && <Loader /> }
+      { httpStatusSlice.status === 'success' && <Banner responseStatusData = {httpStatusSlice}/> }
+      { httpStatusSlice.status === 'pending' && <Loader /> }
       <div className="grid">
         <MainHeader onClick={navBarToggleHandler}/>
         {showNavBar && <MainNavigation />}
         <main className= { showNavBar? 'main' : 'main main-stretch'  } >
-          <Suspense fallback={<Loader />}>
-            <Switch>
-                    { routes.map((route, index) => {
-                      return <Route key={index} {...route} />
-                    })}
-            </Switch>
-          </Suspense>
+          <RoutesView />
         </main>
       </div>
-    </Fragment>
-    
+    </Fragment>    
   )
-
 }
 
 export default App;

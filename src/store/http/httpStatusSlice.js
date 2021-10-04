@@ -16,7 +16,7 @@ const httpStatusSlice = createSlice({
             state.status = action.payload.status;
             state.message = action.payload.message;
             state.error = action.payload.error;
-            state.statusCode = action.payload.statusCode;            
+            state.statusCode = action.payload?.statusCode;            
         }
     }
 })

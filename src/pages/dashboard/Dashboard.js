@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import Tile from "../../components/UIElements/Tile";
+import Tile from "../../components/Tile";
 import styles from './Dashboard.module.css';
 import { makeHttpCall } from "../../store/http/httpActions";
 import { dashboardActions } from "../../store/dashboard/dashboardSlice";

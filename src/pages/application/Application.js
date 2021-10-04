@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { makeHttpCall } from '../../store/http/httpActions';
 import { appCodeActions } from '../../store/application/applicationSlice';
 
-import SearchInput from '../../components/controls/SearchInput';
-import SortSelect from '../../components/controls/SortSelect';
-import Button from '../../components/controls/Button';
-import Grid from '../../components/UIElements/Grid';
+import SearchInput from '../../components/SearchInput';
+import SortSelect from '../../components/SortSelect';
+import Button from '../../components/Button';
+import Grid from '../../components/Grid';
 import Form from '../common/Form';
 import { APPCODE_URL } from '../../constants/api';
 

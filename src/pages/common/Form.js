@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import Button from '../../components/controls/Button';
+import Button from '../../components/Button';
 
 import styles from './Form.module.css';
 

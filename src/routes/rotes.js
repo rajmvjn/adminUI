@@ -17,7 +17,8 @@ const routes = [
     {
         path: "/application",
         component: Application,
-        exact: true
+        exact: true,
+        protected: true
     }
 ]
 
